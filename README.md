@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/LMD-Net_architecture.jpg" width="90%" alt="LMD-Net Architecture">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/LMD-Net_architecture.jpg" width="90%" alt="LMD-Net Architecture">
 </p>
 
 > **LMD-Net** is a lightweight yet powerful object detection network for real-time rice disease detection in complex paddy field environments. With only **2.19M parameters** and **4.9 MB** model weight, it achieves **86.7% mAP** across 6 disease categories — making it ideal for deployment on UAVs, edge devices, and field monitoring terminals.
@@ -66,7 +66,7 @@ Rice is the staple food for half the world's population, yet diseases such as ri
 LMD-Net is built upon **YOLOv13n** with targeted improvements in three key components:
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/LMD-Net_architecture.jpg" width="90%" alt="LMD-Net Overview">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/LMD-Net_architecture.jpg" width="90%" alt="LMD-Net Overview">
 </p>
 
 ### Module-level Modifications
@@ -80,7 +80,7 @@ LMD-Net is built upon **YOLOv13n** with targeted improvements in three key compo
 ### LAE Module
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/LAE.jpg" width="60%" alt="LAE Module">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/LAE.jpg" width="60%" alt="LAE Module">
 </p>
 
 The LAE module consists of two parallel paths:
@@ -92,7 +92,7 @@ Both paths are fused via weighted summation along the sampling factor dimension 
 ### MSCB Module
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/MSCB.jpg" width="60%" alt="MSCB Module">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/MSCB.jpg" width="60%" alt="MSCB Module">
 </p>
 
 The MSCB module pipeline:
@@ -113,7 +113,7 @@ MSDC decomposes standard convolution into depth-wise and point-wise stages, usin
 ### MBConv Detection Head
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/MBConv.png" width="40%" alt="MBConv Module">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/MBConv.png" width="40%" alt="MBConv Module">
 </p>
 
 ```
@@ -133,7 +133,7 @@ We constructed a comprehensive rice disease dataset from two sources:
 - 🌐 **Internet collection**: Publicly available rice disease images with diverse conditions
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/dataset_construction.jpg" width="85%" alt="Dataset Construction Pipeline">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/dataset_construction.jpg" width="85%" alt="Dataset Construction Pipeline">
 </p>
 
 ### Disease Categories (6 classes, 18,257 original images)
@@ -378,7 +378,7 @@ python val.py \
 ### Detection Results Comparison
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/detection_comparison.jpg" width="95%" alt="Detection Results Comparison">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/detection_comparison.jpg" width="95%" alt="Detection Results Comparison">
 </p>
 
 > Visual comparison across 6 disease types with YOLOv7n/tiny, YOLOv8n, YOLOv11n, YOLOv13n (baseline), RT-DETR series, and **LMD-Net (Ours)**. LMD-Net shows superior performance especially on:
@@ -389,7 +389,7 @@ python val.py \
 ### Grad-CAM Heatmap Analysis
 
 <p align="center">
-  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/figures/gradcam_heatmap.jpg" width="95%" alt="Grad-CAM Heatmap Analysis">
+  <img src="https://github.com/zhangpengluo/LMD-Net-rice-leaf-disease-detection/Figures/gradcam_heatmap.jpg" width="95%" alt="Grad-CAM Heatmap Analysis">
 </p>
 
 > Progressive module integration analysis using Grad-CAM visualization across all 6 disease categories:
