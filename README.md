@@ -153,7 +153,7 @@ We constructed a comprehensive rice disease dataset from two sources:
 ```
 Original 18,257 images
     │
-    ├── 70% → SET1 (13,908 images) ──→ Data Augmentation (×2) ──→ Training Set (~24,785 images)
+    ├── 70% → SET1 (13,908 images) ──→ Data Augmentation (×1.5) ──→ Training Set (~24,785 images)
     │         ├── Random horizontal flip
     │         ├── Flip 90° / 180°
     │         ├── Translation
@@ -260,12 +260,12 @@ python train.py \
   --data datasets/rice_disease/data.yaml \
   --cfg models/LMD-Net.yaml \
   --epochs 400 \
-  --batch 8 \
-  --imgsz 320 \
+  --batch 16 \
+  --imgsz 640 \
   --optimizer SGD \
   --patience 100 \
   --device 0 \
-  --workers 4 \
+  --workers 0 \
   --seed 0 \
   --amp
 ```
@@ -278,7 +278,7 @@ if __name__ == '__main__':
 		#model = RTDETR(r'F:\rice leaf disease\yolov13-main\ultralytics\cfg\models\v13\MSCB1_LAE_DetectMBConv.yaml')#if use RTDETR
     results = model.train(
         data=r'F:\rice leaf disease\Rice Tungro\Tungro.yaml',#change into your data path
-        epochs=250,
+        epochs=400,
         batch=16,
         imgsz=640,
         device=0,
@@ -286,10 +286,7 @@ if __name__ == '__main__':
         workers=0, 
         cache='ram',  
         amp=True, 
-        project="runs",
-        name="Rice Tungro",
         optimizer='SGD',
-        resume=True,
     )
     metrics = model.val()
 ``` 
@@ -300,14 +297,14 @@ if __name__ == '__main__':
 |-----------|-------|-------------|
 | `epochs` | 400 | Maximum training epochs |
 | `patience` | 100 | Early stopping patience |
-| `batch` | 8 | Batch size per GPU |
-| `imgsz` | 320 | Input image size |
+| `batch` | 16 | Batch size per GPU |
+| `imgsz` | 640 | Input image size |
 | `optimizer` | SGD | Optimizer type |
 | `seed` | 0 | Random seed for reproducibility |
 | `amp` | True | Automatic Mixed Precision training |
 | `mosaic` | 1.0 | Mosaic augmentation ratio |
 | `device` | 0 | GPU device index |
-| `workers` | 4 | Data loading workers |
+| `workers` | 0 | Data loading workers |
 
 ---
 
@@ -319,7 +316,7 @@ if __name__ == '__main__':
 python detect.py \
   --weights runs/train/exp/weights/best.pt \
   --source path/to/images \
-  --imgsz 320 \
+  --imgsz 640 \
   --conf-thres 0.25 \
   --iou-thres 0.45 \
   --device 0
@@ -334,9 +331,7 @@ if __name__ == '__main__':
     model = YOLO(r'F:\rice leaf disease\yolov13-main\runs\Leaf_Scald\weights\best.pt') # select your model.pt path
     #model = RTDETR(r"F:\rice leaf disease\yolov13-main\rtdetr-x\train\weights\best.pt")
     model.predict(source=r'F:\rice leaf disease\Leaf_Scald\train\images\aug_0_7_jpg.rf.6193c60a84c4a39d22e3bb0d3be8b816.jpg',
-                  imgsz=1280,
-                  project='runs/detect',
-                  name='Scald',
+                  imgsz=640,
                   save=True,
                   # conf=0.2,
                   # iou=0.7,
@@ -356,7 +351,7 @@ if __name__ == '__main__':
 python detect.py \
   --weights runs/train/exp/weights/best.pt \
   --source path/to/video.mp4 \
-  --imgsz 320 \
+  --imgsz 640\
   --device 0
 ```
 
@@ -366,7 +361,7 @@ python detect.py \
 python val.py \
   --data datasets/rice_disease/data.yaml \
   --weights runs/train/exp/weights/best.pt \
-  --imgsz 320 \
+  --imgsz 640 \
   --batch 8 \
   --device 0
 ```
