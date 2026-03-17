@@ -129,7 +129,7 @@ When input and output dimensions match, the shortcut connection enables feature 
 ### Overview
 
 We constructed a comprehensive rice disease dataset from two sources:
-- 🏫 **Field collection**: Key Laboratory of Smart Agriculture Technology, Ministry of Agriculture and Rural Affairs, Northeast China
+- 🏫 **Field collection**: **Key Laboratory of Swine Facilities Engineering**, Ministry of Agriculture and Rural Affairs, Harbin 150030, PR China — Field data collection and experimental support
 - 🌐 **Internet collection**: Publicly available rice disease images with diverse conditions
 
 <p align="center">
