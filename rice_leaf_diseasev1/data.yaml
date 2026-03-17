@@ -1,0 +1,17 @@
+path: F:\rice_leaf_disease\rice_leaf_diseasev1
+train:
+  - train/images
+val:
+  - val/images
+test: # test images (optional)
+  - test/images
+nc: 6
+
+names:
+  0: Bacterial_Leaf_Blight
+  1: Brown_Spot
+  2: Leaf_Blast
+  3: Rice Tungro
+  4: Rice False Smut
+  5: Leaf_Scald
+

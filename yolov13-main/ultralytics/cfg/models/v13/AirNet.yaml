@@ -1,0 +1,40 @@
+nc: 4 # number of classes
+scales: # model compound scaling constants, i.e. 'model=yolov13n.yaml' will call yolov13.yaml with scale 'n'
+# Parameters
+
+# YOLO11 backbone
+backbone:
+  # [from, repeats, module, args]
+  - [-1, 1, Conv, [64, 3, 2]]   # 0-P1/2
+  - [-1, 1, AirNet, []]         # 1 (新插入的层)
+  - [-1, 1, Conv, [128, 3, 2]]  # 2-P2/4 (原第1层)
+  - [-1, 2, C3k2, [256, False, 0.25]] # 3
+  - [-1, 1, Conv, [256, 3, 2]]  # 4-P3/8
+  - [-1, 2, C3k2, [512, False, 0.25]] # 5
+  - [-1, 1, Conv, [512, 3, 2]]  # 6-P4/16
+  - [-1, 2, C3k2, [512, True]]  # 7
+  - [-1, 1, Conv, [1024, 3, 2]] # 8-P5/32
+  - [-1, 2, C3k2, [1024, True]] # 9
+  - [-1, 1, SPPF, [1024, 5]]    # 10
+  - [-1, 2, C2PSA, [1024]]      # 11
+
+# YOLO11 head
+head:
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 12
+  - [[-1, 7], 1, Concat, [1]]   # 13: 原本是与第6层Concat，现在改为7 (P4)
+  - [-1, 2, C3k2, [512, False]] # 14
+
+  - [-1, 1, nn.Upsample, [None, 2, "nearest"]] # 15
+  - [[-1, 5], 1, Concat, [1]]   # 16: 原本是与第4层Concat，现在改为5 (P3)
+  - [-1, 2, C3k2, [256, False]] # 17 (P3/8-small)
+
+  - [-1, 1, Conv, [256, 3, 2]]  # 18
+  - [[-1, 14], 1, Concat, [1]]  # 19: 原本是与第13层Concat，现在改为14
+  - [-1, 2, C3k2, [512, False]] # 20 (P4/16-medium)
+
+  - [-1, 1, Conv, [512, 3, 2]]  # 21
+  - [[-1, 11], 1, Concat, [1]]  # 22: 原本是与第10层Concat，现在改为11 (P5)
+  - [-1, 2, C3k2, [1024, True]] # 23 (P5/32-large)
+
+  - [[17, 20, 23], 1, Detect, [nc]] # 24: 原本是 [16, 19, 22]，全部加1
+
