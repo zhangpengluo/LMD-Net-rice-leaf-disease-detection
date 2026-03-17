@@ -425,7 +425,7 @@ If you find this work useful in your research, please consider citing:
 
 - [Ultralytics](https://github.com/ultralytics/ultralytics) — YOLO ecosystem and training framework
 - [YOLOv13](https://github.com/iMoonLab/yolov13) — Baseline detection model
-- **Key Laboratory of Smart Agriculture Technology**, Ministry of Agriculture and Rural Affairs, Northeast China — Field data collection and experimental support
+- **Key Laboratory of Swine Facilities Engineering**, Ministry of Agriculture and Rural Affairs, Harbin 150030, PR China — Field data collection and experimental support
 
 ---
 
