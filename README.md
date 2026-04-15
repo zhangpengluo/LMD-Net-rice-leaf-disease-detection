@@ -16,7 +16,8 @@
 </p>
 
 > **LMD-Net** is a lightweight yet powerful object detection network for real-time rice disease detection in complex paddy field environments. With only **2.19M parameters** and **4.9 MB** model weight, it achieves **86.7% mAP** across 6 disease categories — making it ideal for deployment on UAVs, edge devices, and field monitoring terminals.
-
+>
+>**PS:The dataset could be downloaded in https://pan.baidu.com/s/1DRrfn7FOfKLaMz4WaQ2Zjg?pwd=neau and the passport is neau.**
 ---
 
 ## 📋 Table of Contents
